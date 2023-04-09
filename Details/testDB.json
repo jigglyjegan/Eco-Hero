@@ -1,0 +1,169 @@
+{
+    "users" : {
+        "userId1" : {
+            "firstName": "Ryan",
+            "lastName": "Koh",
+            "company": "Eco Hero",
+            "email": "ryankoh@bt3103.com",
+            "password": 123456
+        },
+        ...
+    },
+
+    "depts" : { 
+        "userId1" : {
+            "finance" : true,
+            "hr" : true,
+            "legal" : true,
+            "manufacturing" : true,
+            "transport" : true,
+            ...
+        },
+        ...
+    },
+
+    "dataUploads" : {
+        "userId1" : {
+            "log22022022" : {
+                "path" : "<relative file path containing log22022022>",
+                "timestamp" : "2012-04-23T18:25:43.511Z"
+            }, 
+            ...
+        },
+        ...
+    },
+
+    "limits" : {
+        "userId1" : {
+            "electricity" : 100,
+            "water" : 100,
+            "carbon" : 100
+        },
+        ...
+    },
+
+    "elecUsageDaily" : {
+        "userId1Finance202201" : {
+            "1" : 10,
+            ...
+        },
+        ...
+    },
+
+    "elecUsageMthly" : {
+        "userId1Finance2022" : {
+            "Jan" : 30000,
+            ...
+        },
+        ...
+    },
+    
+    "elecUsageYrly" : {
+        "userId1Finance" : {
+            "2022" : 360000,
+            ...
+        }
+        ...
+    },
+
+    "waterUsageDaily" : {
+        "userId1Finance202201" : {
+            "1" : 10,
+            ...
+        },
+        ...
+    },
+
+    "waterUsageMthly" : {
+        "userId1Finance2022" : {
+            "Jan" : 30000,
+            ...
+        },
+        ...
+    },
+    
+    "waterUsageYrly" : {
+        "userId1Finance" : {
+            "2022" : 360000,
+            ...
+        }
+        ...
+    },
+
+    "carbonUsageDaily" : {
+        "userId1Finance202201" : {
+            "1" : 10,
+            ...
+        },
+        ...
+    },
+
+    "carbonUsageMthly" : {
+        "userId1Finance2022" : {
+            "Jan" : 30000,
+            ...
+        },
+        ...
+    },
+    
+    "carbonUsageYrly" : {
+        "userId1Finance" : {
+            "2022" : 360000,
+            ...
+        }
+        ...
+    },
+}
+
+
+
+
+
+
+// {
+//     "companies": {
+//         "coyA" : {
+//             "name" : "National University of Science",
+//             "dept" : {
+//                 "ComSci" : {
+//                     "mark1" : true,
+//                     "jegan1" : true,
+//                     "ryan1" : true
+//                 },
+//                 "InfoSec" : {
+//                     "anthony1" : true,
+//                     "chee kang1" : true
+
+//                 }
+//             }
+//         },
+//         ...
+//     },
+
+//     "appliances" : {
+//         "app1" : {
+//             "unitPrice" : "price",
+//             "appUsageUnit" : "val",
+//             "appLimit": "val",
+//             "appName" : "name",
+//             "log" : {
+//                 "jan" : {
+//                     "1" : "value used today",
+//                     "2" : "value used today",
+//                     "3" : "value used today"
+//                 },
+//                 "feb" : {
+//                     "1" : "value used today",
+//                     "2" : "value used today",
+//                     "3" : "value used today"
+//                 },
+//                 "mar" : {
+//                     "1" : "value used today",
+//                     "2" : "value used today",
+//                     "3" : "value used today"
+//                 }
+//             }
+//         },
+//         ...
+//     }
+// }

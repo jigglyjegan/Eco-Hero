@@ -1,0 +1,109 @@
+Metrics NOT added in yet:
+- Calculated mthly ttl
+- Calculated yrly ttl
+
+DB Rules for adding/del (To deal with the update anoms that arise due to denorm)
+
+-> For querying xUsageDaily:
+1) Key -> userId + deptName + year + mth 
+
+-> For querying xUsageMthly:
+1) Key -> userId + deptName + year
+
+-> For querying xUsageYrly:
+1) Key -> userId + deptName
+
+-> For each daily entry ADDED:
+1) Add into corresponding daily table
+	1a) If year & mth exist: Add entry into corresponding year & mth
+	1b) If year / mth DNE: Make new key, add entry in
+	
+2) Update corresponding monthly table
+	2a) If year & mth exist: Add new val to curr ttl value
+	2b) If year / mth DNE: Make new key and increment from 0
+
+3) Update corresponding yearly table 
+	3a) If year exist: Add new val to curr ttl value
+	3b) If year DNE: Make new key and increment from 0
+
+-> For each daily entry UPDATED:
+1) Update daily table
+	1a) Store old val in a temp var
+	1b) Update old val with new val
+
+2) Update mthly table
+	2a) Subtract curr mthly val by the old val (using temp var)
+	2b) Add new val to curr mthly val
+
+3) Update yearly table
+	2a) Subtract curr yrly val by the old val (using temp var)
+	2b) Add new val to curr yearly val
+
+-> For each daily entry DELETED:
+1) Update daily table
+	1a) Delete old val
+	1b) If mthLvlKey is now empty, del mth
+	1c) If yrLvlKey is now empty, del yr
+
+2) Update mthly table
+	2a) Subtract curr mthly val by the old val
+	2b) If value is 0, delete mth
+	2c) If yr is empty, delete year
+
+3) Update yrly table
+	3a) Subtract curr yrly val by the old val
+	3b) If value is 0, delete yr
+
+
+
+
+Variable dic
+
+Registration✓:
+Email
+First name
+Last name
+Full name
+Password
+Login ✓:
+Email 
+Password
+Change pwd ✓:
+OldPwd
+NewPwd
+CfmNewPwd
+Forget pwd ✓:
+Email
+Link to reset pg in the email?
+UsageHist:
+Table
+Id
+Timestamp
+PastFile
+DelButton (don’t need to store in db)
+InputData
+CSVFile (The file they upload)
+, Calculator to convert
+ChangeLimit (Monthly)
+ElectricityLimit
+WaterLimit
+CarbonLimit
+Send email at 75%
+DailyViewAtCoLvl
+CalculatedMthlyTtl -> 1 number
+IndividualDailyVals -> A cluster bar chart	 (Hover shows breakdown by department per day)
+AvgDailySpending -> 1 number
+DailyViewAtDeptLvl (Individual Dept)
+CalculatedMthlyTtl -> 1 number
+IndividualDailyVals -> A graph
+AvgDailySpending -> 1 number
+Rank -> 1st is best energy saving dept in co
+MonthlyViewAtCoLvl
+CalculatedYearlyTtl -> 1 number
+IndividualMthlyVals -> A graph (Hover shows breakdown by department per mth)
+AvgMthlySpending -> 1 number
+MonthlyViewAtDeptLvl (Individual Dept)
+CalculatedYearlyTtl -> 1 number
+IndividualMonthlyVals -> A graph
+AvgMonthlySpending -> 1 number
+Rank -> 1st is best energy saving dept in co
